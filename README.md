@@ -1,77 +1,47 @@
-```markdown
-# B2B Revenue Prophet
+# Прогнозирование выручки B2B-клиентов
 
-End-to-end machine learning project for predicting B2B customer revenue using transactional data. Focus on feature engineering and business insights.
+Проект по построению модели для прогнозирования месячной выручки от B2B-клиентов на основе исторических транзакционных данных.
 
-## Business Problem
-Predict future revenue from B2B clients to help with:
-- Revenue forecasting and planning
-- Customer segmentation and targeting
-- Resource allocation optimization
+## Описание проекта
 
-## Dataset
-UCI Online Retail II dataset - 1+ million transactions from UK-based online retailer (2009-2011).
-- Source: https://archive.ics.uci.edu/ml/datasets/Online+Retail+II
-- Contains both B2C and B2B transactions
+**Задача:** Спрогнозировать выручку от каждого клиента на следующий период для улучшения финансового планирования и выявления ключевых драйверов роста.
 
-## Project Structure
-```
-├── data/
-│   ├── raw/           # Original dataset files
-│   └── processed/     # Cleaned and feature-engineered data
-├── notebooks/
-│   ├── 01_eda.ipynb   # Exploratory Data Analysis
-│   ├── 02_feature_engineering.ipynb
-│   └── 03_modeling.ipynb
-├── src/
-│   ├── features/      # Feature engineering modules
-│   ├── models/        # Model training and evaluation
-│   └── visualization/ # Plotting utilities
-├── reports/           # Analysis visualizations and results
-└── requirements.txt
-```
+**Данные:** Используется датасет Online Retail II, содержащий реальные транзакции онлайн-ритейлера за 2009-2011 годы.
 
-## Key Features
-- **Advanced Feature Engineering**: RFM metrics, temporal features, customer behavior patterns
-- **Multiple Modeling Approaches**: Linear models, tree-based methods, ensemble techniques
-- **Business-Focused Evaluation**: Interpretable metrics and actionable insights
-- **Production-Ready Pipeline**: Modular code structure for scalability
+**Подход:** Регрессионное моделирование с акцентом на feature engineering и интерпретируемость результатов.
 
-## Installation
-```bash
-git clone https://github.com/yourusername/b2b-revenue-prophet.git
-cd b2b-revenue-prophet
-pip install -r requirements.txt
-```
 
-## Usage
-1. **Exploratory Analysis**:
-```python
-jupyter notebook notebooks/01_eda.ipynb
-```
+## Ключевые особенности
 
-2. **Feature Engineering**:
-```python
-python src/features/build_features.py
-```
+### 1. Генерация признаков
+- RFM-метрики (Recency, Frequency, Monetary)
+- Временные характеристики (сезонность, частота, регулярность)
+- Поведенческие паттерны клиентов
+- Динамические показатели (рост/падение выручки)
 
-3. **Model Training**:
-```python
-python src/models/train_model.py
-```
+### 2. Исследованные модели
+- Линейные модели с регуляризацией (Lasso, Ridge)
+- Случайный лес (Random Forest)
+- Градиентный бустинг (CatBoost, XGBoost)
 
-## Results
-- Best model achieves X% MAPE on test set
-- Key drivers: Recent purchase frequency, average basket value, customer tenure
-- Detailed analysis in `reports/final_report.pdf`
+### 3. Метрики качества
+- MAE (Mean Absolute Error)
+- RMSE (Root Mean Squared Error) 
+- MAPE (Mean Absolute Percentage Error)
+- R² (Коэффициент детерминации)
 
-## Technologies
-- Python 3.8+
-- Pandas, NumPy, Scikit-learn
-- XGBoost, LightGBM
-- Matplotlib, Seaborn
-- Jupyter Notebook
+## Результаты
 
-## License
-MIT
-```
+Лучшая модель — CatBoostRegressor — показала следующие результаты:
+
+- **MAE:** 1 412.7
+- **MAPE:** 4.13%
+- **R²:** 0.35
+- **RMSE:** 13 536.2
+
+### Важнейшие факторы выручки
+1. Средний чек (40.5%)
+2. Частота покупок (28.4%)
+3. Общий объём покупок (17.9%)
+
+Эти три фактора объясняют 87% влияния на прогноз.
